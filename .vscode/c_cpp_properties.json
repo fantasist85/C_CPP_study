@@ -4,8 +4,9 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "E:/Users/fanta/.vscode/extensions/tuymove.tcc-compiler-0.0.4/compiler/include",
-                "C:/Users/SimJaeheung/.vscode/extensions/tuymove.tcc-compiler-0.0.4/compiler/include"
+                "${SystemDrive}/Keil_v5/ARM/ARMCC/include/",
+                "${LOCALAPPDATA}/Arm/Packs",
+                "${USERPROFILE}/.vscode/extensions/tuymove.tcc-compiler-0.0.4/compiler/include/"
             ],
             "defines": [
                 "_DEBUG",

@@ -1,19 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int Array[4][4];
+#define MAX_ROW 4
+#define MAX_COL 4
+
+int Array[MAX_ROW][MAX_COL];
 
 void array_move(char dir)
 {
     char row, col;
+    char row_buffer, col_buffer;
     if (dir == 'd')
     {
-        for (col = 0; col < 4; col++)
+        for (col = 0; col < MAX_COL; col++)
         {
-            if (Array[3][col] == 0)
+            for (row = MAX_ROW - 1; row < 0; row--)
             {
+                if ()
             }
-            else if (Array[3][col] == 0)
         }
     }
 }
@@ -22,9 +26,9 @@ void print_array()
 {
     char row, col;
 
-    for (row = 0; row < 4; row++)
+    for (row = 0; row < MAX_ROW; row++)
     {
-        for (col = 0; col < 4; col++)
+        for (col = 0; col < MAX_COL; col++)
         {
             printf("%d", Array[row][col]);
         }
