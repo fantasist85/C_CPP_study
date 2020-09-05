@@ -3,15 +3,30 @@
 
 int Array[4][4];
 
+void array_move(char dir)
+{
+    char row, col;
+    if (dir == 'd')
+    {
+        for (col = 0; col < 4; col++)
+        {
+            if (Array[3][col] == 0)
+            {
+            }
+            else if (Array[3][col] == 0)
+        }
+    }
+}
+
 void print_array()
 {
-    char i, j;
+    char row, col;
 
-    for (i = 0; i < 4; i++)
+    for (row = 0; row < 4; row++)
     {
-        for (j = 0; j < 4; j++)
+        for (col = 0; col < 4; col++)
         {
-            printf("%d", Array[i][j]);
+            printf("%d", Array[row][col]);
         }
         printf("\n");
     }
@@ -26,6 +41,8 @@ void main()
     {
         Array[0][0] = rand() % 3;
         scanf("%c", &scan_dir);
+
+        array_move(scan_dir);
 
         if (scan_dir == 'u')
         {
