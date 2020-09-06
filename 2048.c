@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define MAX_ROW 4 // test
-#define MAX_COL 4 // test
+#define MAX_ROW 5 // test
+#define MAX_COL 5 // test
 
 int Array[MAX_ROW][MAX_COL];
 
@@ -12,24 +12,32 @@ void array_move(char dir)
 {
     char row, col;
     char row_buffer, col_buffer;
+
     if (dir == 'd') {
-//        for (col = 0; col < MAX_COL; col++) {
-            for (row = MAX_ROW - 1; row > 0; row--) {
-                // Remove zero
-                if (Array[row][col] == 0) {
-                    // End of row loop : do nothing
-                    if (row == 0)
-                        ;
-                    // Move valid number
-                    else if (Array[row - 1][col] != 0) {
-                        Array[row][col] = Array[row - 1][col];
-                        Array[row - 1][col] = 0;
-                    }
-                    print_array();
+        //        for (col = 0; col < MAX_COL; col++) { //test 1st col
+        for (row = MAX_ROW - 1; row > 0; row--) {
+            // Remove zero
+            if (Array[row][col] == 0) {
+                // End of row loop : do nothing
+                if (row == 0) {
                 }
-                // Sum
+                // Move valid number
+                else {
+                    for (char i = row; i >= 0; --i) {
+                        // printf("%d", i);
+
+                        if (Array[i][col] != 0) {
+                            Array[row][col] = Array[i][col];
+                            Array[i][col] = 0;
+                            printf("i");
+                        }
+                    }
+                }
+                print_array();
             }
-   //     }
+            // Sum
+        }
+        //     }    //end test 1st col
     }
 }
 
@@ -54,6 +62,7 @@ void main()
     while (1) {
         Array[0][0] = rand() % 3;
         scanf("%c", &scan_dir);
+        print_array();
 
         array_move(scan_dir);
 
