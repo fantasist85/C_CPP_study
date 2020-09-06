@@ -14,30 +14,43 @@ void array_move(char dir)
     char row_buffer, col_buffer;
 
     if (dir == 'd') {
-        //        for (col = 0; col < MAX_COL; col++) { //test 1st col
-        for (row = MAX_ROW - 1; row > 0; row--) {
-            // Remove zero
-            if (Array[row][col] == 0) {
-                // End of row loop : do nothing
-                if (row == 0) {
-                }
-                // Move valid number
-                else {
-                    for (char i = row; i >= 0; --i) {
-                        // printf("%d", i);
+        for (col = 0; col < MAX_COL; col++) {
+            for (row = MAX_ROW - 1; row > 0; row--) {
 
-                        if (Array[i][col] != 0) {
-                            Array[row][col] = Array[i][col];
-                            Array[i][col] = 0;
-                            printf("i");
+                // Sum
+                for (char i = row; i >= 0; --i) {
+                    if (Array[row][col] == Array[row - 1][col]) {
+
+                        Array[row][col] = Array[row][col] + Array[row - 1][col];
+                        Array[row - 1][col] = 0;
+
+                        for (char i = row; i >= 0; --i) {
+                            if (Array[i][col] != 0) {
+                                Array[row][col] = Array[i][col];
+                                Array[i][col] = 0;
+                            }
                         }
                     }
                 }
-                print_array();
+
+                // Remove zero
+                if (Array[row][col] == 0) {
+                    // End of row loop : do nothing
+                    if (row == 0) {
+                    }
+                    // Move valid number
+                    else {
+                        for (char i = row; i >= 0; --i) {
+                            if (Array[i][col] != 0) {
+                                Array[row][col] = Array[i][col];
+                                Array[i][col] = 0;
+                            }
+                        }
+                    }
+                    // print_array();
+                }
             }
-            // Sum
         }
-        //     }    //end test 1st col
     }
 }
 
