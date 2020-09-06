@@ -6,25 +6,30 @@
 
 int Array[MAX_ROW][MAX_COL];
 
+void print_array();
+
 void array_move(char dir)
 {
     char row, col;
     char row_buffer, col_buffer;
     if (dir == 'd') {
-        for (col = 0; col < MAX_COL; col++) {
-            for (row = MAX_ROW - 1; row < 0; row--) {
+//        for (col = 0; col < MAX_COL; col++) {
+            for (row = MAX_ROW - 1; row > 0; row--) {
                 // Remove zero
                 if (Array[row][col] == 0) {
-                    if (row == 0) {
-                    }
+                    // End of row loop : do nothing
+                    if (row == 0)
+                        ;
+                    // Move valid number
                     else if (Array[row - 1][col] != 0) {
                         Array[row][col] = Array[row - 1][col];
                         Array[row - 1][col] = 0;
                     }
+                    print_array();
                 }
                 // Sum
             }
-        }
+   //     }
     }
 }
 
@@ -38,6 +43,7 @@ void print_array()
         }
         printf("\n");
     }
+    printf("\n");
 }
 
 void main()
