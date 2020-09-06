@@ -15,21 +15,13 @@ void array_move(char dir)
 
     if (dir == 'd') {
         for (col = 0; col < MAX_COL; col++) {
-            for (row = MAX_ROW - 1; row > 0; row--) {
+            for (row = MAX_ROW - 1; row > 0; row--) { // change row
 
                 // Sum
                 for (char i = row; i >= 0; --i) {
-                    if (Array[row][col] == Array[row - 1][col]) {
-
-                        Array[row][col] = Array[row][col] + Array[row - 1][col];
-                        Array[row - 1][col] = 0;
-
-                        for (char i = row; i >= 0; --i) {
-                            if (Array[i][col] != 0) {
-                                Array[row][col] = Array[i][col];
-                                Array[i][col] = 0;
-                            }
-                        }
+                    if (Array[row][col] == Array[i][col]) {
+                        Array[row][col] = Array[row][col] + Array[i][col];
+                        Array[i][col] = 0;
                     }
                 }
 
@@ -72,15 +64,11 @@ void main()
     char scan_dir;
     // char new_num;
 
+    Array[0][0] = rand() % 3;
     while (1) {
-        Array[0][0] = rand() % 3;
-        scanf("%c", &scan_dir);
-        print_array();
-
+d        scanf("%c", &scan_dir);
         array_move(scan_dir);
-
-        if (scan_dir == 'u') {
-            print_array();
-        }
+        Array[0][0] = rand() % 3;
+        print_array();
     }
 }
