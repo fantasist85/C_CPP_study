@@ -66,7 +66,7 @@ void main()
 
     Array[0][0] = rand() % 3;
     while (1) {
-d        scanf("%c", &scan_dir);
+        scanf("%c", &scan_dir);
         array_move(scan_dir);
         Array[0][0] = rand() % 3;
         print_array();
