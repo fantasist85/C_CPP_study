@@ -11,15 +11,22 @@ void print_array();
 void array_move(char dir)
 {
     char row, col;
-    char row_buffer, col_buffer;
+    //char row_buffer, col_buffer;
 
     if (dir == 'r') {
         for (row = 0; row < MAX_ROW; row++) {
             for (col = MAX_COL - 1; col > 0; col--) { // change col
 
                 // Sum
-                for (char i = col - 1; i >= 0; i--) {   //2048 rule. sum on multiply of 2
-                    if ((Array[row][col] == Array[row][i]) &&(Array[row][col] != 0)) { // need to ignore when it's not empty
+                for (char i = col - 1; i >= 0; i--) {
+
+                    // need to ignore when it's not empty
+                    if ((Array[row][col] != Array[row][i]) && (Array[row][col] != 0) && (Array[row][i] != 0)) {
+                        break;
+                    }
+
+                    else if ((Array[row][col] == Array[row][i]) && (Array[row][col] != 0)) { // sum on multiply of 2
+
                         Array[row][col] = Array[row][col] + Array[row][i];
                         Array[row][i] = 0;
                         break;
@@ -46,38 +53,8 @@ void array_move(char dir)
         }
     }
 
-    if (dir == 'd') {
-        for (col = 0; col < MAX_COL; col++) {
-            for (row = MAX_ROW - 1; row > 0; row--) { // change row
 
-                // Sum
-                for (char i = row; i >= 0; --i) {
-                    if (Array[row][col] == Array[i][col]) {
-                        Array[row][col] = Array[row][col] + Array[i][col];
-                        Array[i][col] = 0;
-                        break;
-                    }
-                }
 
-                // Remove zero
-                if (Array[row][col] == 0) {
-                    // End of row loop : do nothing
-                    if (row == 0) {
-                    }
-                    // Move valid number
-                    else {
-                        for (char i = row; i >= 0; --i) {
-                            if (Array[i][col] != 0) {
-                                Array[row][col] = Array[i][col];
-                                Array[i][col] = 0;
-                            }
-                        }
-                    }
-                    // print_array(); 
-                }
-            }
-        }
-    }
 }
 
 void print_array()
